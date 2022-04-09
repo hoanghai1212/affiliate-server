@@ -1,13 +1,11 @@
 import {
   Controller,
   Get,
-  Body,
-  Query,
   Param,
 } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
 import { ApiTags } from '@nestjs/swagger';
-import { GetProductSeedInfoQuery } from './cqrs/queries/get-product-seed-info.query';
+import { GetProductSeedInfoQuery } from './cqrs/queries/impl';
 import { ProductSeedInfoDto } from './dto/product-seed-info.dto';
 
 @ApiTags('Affiliate')

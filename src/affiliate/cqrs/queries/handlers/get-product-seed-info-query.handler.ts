@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
 import { ProductSeedInfoDto } from "src/affiliate/dto/product-seed-info.dto";
 import { AffiliateServiceFactory } from "src/affiliate/factories/affiliate-provider-factory";
-import { GetProductSeedInfoQuery } from "./get-product-seed-info.query";
+import { GetProductSeedInfoQuery } from "../impl";
 
 @QueryHandler(GetProductSeedInfoQuery)
 export class GetProductSeedInfoQueryHandler implements IQueryHandler<GetProductSeedInfoQuery, ProductSeedInfoDto> {
