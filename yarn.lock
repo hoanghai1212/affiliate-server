@@ -578,6 +578,13 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@nestjs/axios@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@nestjs/axios/-/axios-0.0.7.tgz#7f134636db13c2c1e8299365c7eceb73cd782b67"
+  integrity sha512-at8nj+1Nb8UleHcIN5QqZYeWX54m4m9s9gxzVE1qWy00neX2rg0+h2TfbWsnDi2tc23zIxqexanxMOJZbzO0CA==
+  dependencies:
+    axios "0.26.0"
+
 "@nestjs/cli@^8.0.0":
   version "8.2.5"
   resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-8.2.5.tgz#02094177f4eac576d1a559b259d541393e49e0bb"
@@ -637,6 +644,13 @@
     object-hash "3.0.0"
     path-to-regexp "3.2.0"
     tslib "2.3.1"
+    uuid "8.3.2"
+
+"@nestjs/cqrs@^8.0.3":
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/cqrs/-/cqrs-8.0.3.tgz#aedc7e98548f8240db84feab65af92edf6dbbf42"
+  integrity sha512-OVZ4yUcJCGnkpPD0gntzCLBd/4Nv6hFVioFMcARs/V7U7CbzraaBinT8+mr9XuoKj9aYX6XCI9qz0+KR8rMSqQ==
+  dependencies:
     uuid "8.3.2"
 
 "@nestjs/mapped-types@*", "@nestjs/mapped-types@1.0.1":
@@ -1365,6 +1379,13 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
+
+axios@0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.0.tgz#9a318f1c69ec108f8cd5f3c3d390366635e13928"
+  integrity sha512-lKoGLMYtHvFrPVt3r+RBMp9nh34N0M8zEfCWqdWZx6phynIEhQqAdydpyBAAG211zlhX9Rgu08cOamy6XjE5Og==
+  dependencies:
+    follow-redirects "^1.14.8"
 
 axios@0.26.1:
   version "0.26.1"
