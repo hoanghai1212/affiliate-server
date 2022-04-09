@@ -1,14 +1,19 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import {
   utilities as nestWinstonModuleUtilities,
-  WinstonModule
+  WinstonModule,
 } from 'nest-winston';
+import { join } from 'path';
 import * as winston from 'winston';
 import { AffiliateModule } from './affiliate/affiliate.module';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'documentation'),
+    }),
     ConfigModule.forRoot(),
     WinstonModule.forRoot({
       transports: [
