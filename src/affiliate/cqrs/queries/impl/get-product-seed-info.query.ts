@@ -1,5 +1,3 @@
-export class GetProductSeedInfoQuery  {
-    constructor(
-        public readonly productLink: string
-    ) {}
+export class GetProductSeedInfoQuery {
+  constructor(public readonly productLink: string) {}
 }

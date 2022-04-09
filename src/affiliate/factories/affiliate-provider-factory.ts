@@ -1,21 +1,29 @@
-import { Injectable, Scope } from "@nestjs/common";
-import { IAffiliateService, TikiService, LazadaService, ShopeeService } from "../services/affiliate-provider.service";
+import { Injectable } from '@nestjs/common';
+import { AffiliateDomain } from '../constants';
+import { IAffiliateService } from '../interfaces';
+import {
+  LazadaService,
+  ShopeeService,
+  TikiService,
+} from '../services/affiliate-provider.service';
 
 @Injectable()
 export class AffiliateServiceFactory {
   constructor(
     private readonly tikiService: TikiService,
     private readonly lazadaService: LazadaService,
-    private readonly shopeeService: ShopeeService
-    ) {}
+    private readonly shopeeService: ShopeeService,
+  ) {}
+
   public getAffiliateService(uri: string): IAffiliateService {
-    const domain = uri.split('/')[2];
+    const domain = uri.split('/')[2] as AffiliateDomain;
+
     switch (domain) {
-      case 'tiki.vn':
+      case AffiliateDomain.Tiki:
         return this.tikiService;
-      case 'lazada.vn':
-        return this.lazadaService
-      case 'shopee.vn':
+      case AffiliateDomain.Lazada:
+        return this.lazadaService;
+      case AffiliateDomain.Shopee:
         return this.shopeeService;
       default:
         throw new Error('Unknown affiliate service');
