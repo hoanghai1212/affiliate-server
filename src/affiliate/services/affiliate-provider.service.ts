@@ -44,10 +44,10 @@ export class ShopeeService implements IAffiliateService {
         return product;
       }
      
-      product.oldMinPrice = data.price_min_before_discount
+      product.oldMinPrice = data.price_min_before_discount && data.price_min_before_discount > 0
         ? data.price_min_before_discount / 100000
         : null;
-      product.oldMaxPrice = data.price_max_before_discount
+      product.oldMaxPrice = data.price_max_before_discount && data.price_max_before_discount > 0
         ? data.price_max_before_discount / 100000
         : null;
       product.currentMinPrice = data.price / 100000;
