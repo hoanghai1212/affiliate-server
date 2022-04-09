@@ -2,12 +2,9 @@ import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { AffiliateController } from './affiliate.controller';
-import { GetProductSeedInfoQueryHandler } from './cqrs/queries/get-product-seed-info-query.handler';
+import { QueryHandlers } from './cqrs/queries/handlers';
 import { AffiliateServiceFactory } from './factories/affiliate-provider-factory';
-import { LazadaService, ShopeeService, TikiService } from './services/affiliate-provider.service';
-
-export const QueryHandlers = [GetProductSeedInfoQueryHandler];
-export const CommandHandlers = [];
+import { LazadaService, ShopeeService, TikiService } from './services';
 
 @Module({
   imports: [CqrsModule, HttpModule],
@@ -18,7 +15,6 @@ export const CommandHandlers = [];
     ShopeeService,
     AffiliateServiceFactory,
     ...QueryHandlers,
-    ...CommandHandlers,
   ]
 })
 export class AffiliateModule {}
