@@ -8,6 +8,9 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=14.19.0"
+  },
   "scripts": {
     "postinstall": "husky install",
     "prebuild": "rimraf dist",

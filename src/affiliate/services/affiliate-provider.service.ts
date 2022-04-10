@@ -11,8 +11,8 @@ import { Provider } from '../constants';
 import { ProductSeedInfoDto } from '../dto';
 import { IAffiliateService } from '../interfaces';
 
+import * as jsdom from 'jsdom';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 @Injectable()
 export class LazadaService implements IAffiliateService {
@@ -40,6 +40,7 @@ export class LazadaService implements IAffiliateService {
       }
 
       const { window } = new JSDOM(data, {
+        contentType: 'text/html',
         runScripts: 'dangerously',
       });
 
