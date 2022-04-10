@@ -55,6 +55,63 @@ $ yarn start:dev
 $ yarn start:prod
 ```
 
+## Working with pscale
+
+##### Create new pscale branch from master (max 3 branch so remember to delete branch after deploy to master):
+
+```bash
+pscale branch create master [branch-name]
+```
+
+##### Connect to database:
+
+```bash
+# working branch
+pscale connect --port 3302 master [branch-name]
+
+# shadow branch
+pscale connect --port 3302 master shadow
+```
+
+##### Push change to database:
+
+```bash
+npx prisma db push || yarn db:push
+```
+
+##### Create deploy request:
+
+```bash
+pscale deploy-request create master [branch-name]
+```
+
+##### Check diff:
+
+```bash
+pscale deploy-request diff master [deploy-request-number]
+```
+
+##### Deploy changed:
+
+```bash
+pscale deploy-request deploy master [deploy-request-number]
+```
+
+##### Remove branch:
+
+⚠️ **Never delete shadow branch.**
+
+```bash
+pscale branch delete master [branch-name]
+```
+
+##### Define connection url in .env file
+
+```bash
+DATABASE_URL= mysql://root@127.0.0.1:3302/master
+SHADOW_DATABASE_URL = mysql://root@127.0.0.1:3301/master
+```
+
 ## License
 
 Nest is [MIT licensed](LICENSE).

@@ -67,7 +67,22 @@ $ yarn start
 $ yarn start:dev
 
 # production mode
-$ yarn start:prod</code></pre></div><h2 id="license">License</h2>
+$ yarn start:prod</code></pre></div><h2 id="working-with-pscale">Working with pscale</h2>
+<h5 id="create-new-pscale-branch-from-master-max-3-branch-so-remember-to-delete-branch-after-deploy-to-master">Create new pscale branch from master (max 3 branch so remember to delete branch after deploy to master):</h5>
+<div><pre class="line-numbers"><code class="language-bash">pscale branch create master [branch-name]</code></pre></div><h5 id="connect-to-database">Connect to database:</h5>
+<div><pre class="line-numbers"><code class="language-bash"># working branch
+pscale connect --port 3302 master [branch-name]
+
+# shadow branch
+pscale connect --port 3302 master shadow</code></pre></div><h5 id="push-change-to-database">Push change to database:</h5>
+<div><pre class="line-numbers"><code class="language-bash">npx prisma db push || yarn db:push</code></pre></div><h5 id="create-deploy-request">Create deploy request:</h5>
+<div><pre class="line-numbers"><code class="language-bash">pscale deploy-request create master [branch-name]</code></pre></div><h5 id="check-diff">Check diff:</h5>
+<div><pre class="line-numbers"><code class="language-bash">pscale deploy-request diff master [deploy-request-number]</code></pre></div><h5 id="deploy-changed">Deploy changed:</h5>
+<div><pre class="line-numbers"><code class="language-bash">pscale deploy-request deploy master [deploy-request-number]</code></pre></div><h5 id="remove-branch">Remove branch:</h5>
+<p>⚠️ <strong>Never delete shadow branch.</strong></p>
+<div><pre class="line-numbers"><code class="language-bash">pscale branch delete master [branch-name]</code></pre></div><h5 id="define-connection-url-in-env-file">Define connection url in .env file</h5>
+<div><pre class="line-numbers"><code class="language-bash">DATABASE_URL= mysql://root&#64;127.0.0.1:3302/master
+SHADOW_DATABASE_URL = mysql://root&#64;127.0.0.1:3301/master</code></pre></div><h2 id="license">License</h2>
 <p>Nest is <a href="LICENSE">MIT licensed</a>.</p>
 
 

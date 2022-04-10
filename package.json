@@ -16,8 +16,8 @@
     "start:prod": "npm run doc & node dist/main",
     "db:studio": "npx prisma studio",
     "db:migrate": "npx prisma migrate dev",
-    "db:pull": "npx prisma pull",
-    "db:push": "npx prisma push",
+    "db:pull": "npx prisma db pull",
+    "db:push": "npx prisma db push",
     "db:gen": "npx prisma generate",
     "doc": "npx @compodoc/compodoc -p tsconfig.json -n \"Affiliate documentation\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
