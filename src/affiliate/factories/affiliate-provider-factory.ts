@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { AffiliateDomain } from '../constants';
 import { IAffiliateService } from '../interfaces';
 import {
@@ -9,6 +9,12 @@ import {
 
 @Injectable()
 export class AffiliateServiceFactory {
+  SERVICE_MAP = {
+    [AffiliateDomain.TIKI]: this.tikiService,
+    [AffiliateDomain.LAZADA]: this.lazadaService,
+    [AffiliateDomain.SHOPEE]: this.shopeeService,
+  };
+
   constructor(
     private readonly tikiService: TikiService,
     private readonly lazadaService: LazadaService,
@@ -16,17 +22,14 @@ export class AffiliateServiceFactory {
   ) {}
 
   public getAffiliateService(uri: string): IAffiliateService {
-    const domain = uri.split('/')[2] as AffiliateDomain;
+    const domain = uri.replace('www.', '').split('/')[2] as AffiliateDomain;
 
-    switch (domain) {
-      case AffiliateDomain.Tiki:
-        return this.tikiService;
-      case AffiliateDomain.Lazada:
-        return this.lazadaService;
-      case AffiliateDomain.Shopee:
-        return this.shopeeService;
-      default:
-        throw new Error('Unknown affiliate service');
+    const result = this.SERVICE_MAP[domain];
+
+    if (!result) {
+      throw new BadRequestException(`${domain} is not supported`);
     }
+
+    return result;
   }
 }

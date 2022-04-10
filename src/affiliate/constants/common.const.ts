@@ -1,11 +1,11 @@
 export enum Provider {
-  Lazada = 'lazada',
-  Shopee = 'shopee',
-  Tiki = 'tiki',
+  LAZADA = 'lazada',
+  SHOPEE = 'shopee',
+  TIKI = 'tiki',
 }
 
 export enum AffiliateDomain {
-  Lazada = 'lazada.vn',
-  Shopee = 'shopee.vn',
-  Tiki = 'tiki.vn',
+  LAZADA = 'lazada.vn',
+  SHOPEE = 'shopee.vn',
+  TIKI = 'tiki.vn',
 }

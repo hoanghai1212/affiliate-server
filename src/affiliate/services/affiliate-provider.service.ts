@@ -11,10 +11,77 @@ import { Provider } from '../constants';
 import { ProductSeedInfoDto } from '../dto';
 import { IAffiliateService } from '../interfaces';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 @Injectable()
 export class LazadaService implements IAffiliateService {
+  constructor(
+    private readonly httpService: HttpService,
+    @Inject(WINSTON_MODULE_NEST_PROVIDER)
+    private readonly logger: LoggerService,
+  ) {}
+
   async getProductInfo(uri: string): Promise<ProductSeedInfoDto> {
-    throw new Error('Method not implemented.' + uri);
+    const product = {} as ProductSeedInfoDto;
+    product.provider = Provider.LAZADA;
+    product.productLink = uri;
+
+    try {
+      const { data, status, statusText } = await firstValueFrom(
+        this.httpService.get(uri),
+      );
+
+      if (status !== 200) {
+        this.logger.error(
+          `Error while fetching product information from ${product.provider}: ${status} - ${statusText}`,
+        );
+        return product;
+      }
+
+      const { window } = new JSDOM(data, {
+        runScripts: 'dangerously',
+      });
+
+      const rawProductInfoFromDataLayer = window.dataLayer.find((data) =>
+        Boolean(data['pdt_name']),
+      );
+
+      const scripts = window.document.querySelectorAll(
+        "script[type='application/ld+json']",
+      );
+
+      const rawProductInfo = [...scripts]
+        .map((script) => JSON.parse(script.innerHTML))
+        .find((json) => json['@type'] === 'Product');
+
+      product.name = rawProductInfo.name;
+      product.description = rawProductInfo.description;
+      product.discountRate = rawProductInfoFromDataLayer.pdt_discount
+        ? Math.abs(rawProductInfoFromDataLayer.pdt_discount.replace('%', '')) /
+          100
+        : null;
+
+      const pdt_price = +rawProductInfoFromDataLayer.pdt_price
+        .slice(0, -2)
+        .replace('.', '');
+
+      product.oldMinPrice = product.discountRate ? pdt_price : null;
+
+      product.currentMinPrice = product.discountRate
+        ? product.oldMinPrice * (1 - product.discountRate)
+        : pdt_price;
+
+      product.image = rawProductInfo.image;
+      product.rating = rawProductInfo.aggregateRating.ratingValue;
+
+      return product;
+    } catch (error) {
+      this.logger.error(
+        `Error when get product info from ${product.provider}: ${error}`,
+      );
+      return product;
+    }
   }
 }
 
@@ -30,7 +97,7 @@ export class ShopeeService implements IAffiliateService {
 
   async getProductInfo(uri: string): Promise<ProductSeedInfoDto> {
     const product = {} as ProductSeedInfoDto;
-    product.provider = 'shopee';
+    product.provider = Provider.SHOPEE;
     product.productLink = uri;
     try {
       const uriParts = uri.split('.');
@@ -63,9 +130,9 @@ export class ShopeeService implements IAffiliateService {
       product.discountRate = +data.raw_discount / 100;
       product.rating = data.item_rating.rating_star;
       return product;
-    } catch (err) {
+    } catch (error) {
       this.logger.error(
-        `Error while fetching product information for shopee: ${err}`,
+        `Error when get product info from ${product.provider}: ${error}`,
       );
       return product;
     }
@@ -86,7 +153,7 @@ export class TikiService implements IAffiliateService {
   async getProductInfo(uri: string): Promise<ProductSeedInfoDto> {
     const requestUrl = this.createRequestUrl(uri);
     const product = {} as ProductSeedInfoDto;
-    product.provider = Provider.Tiki;
+    product.provider = Provider.TIKI;
     product.productLink = uri;
 
     try {
@@ -96,8 +163,9 @@ export class TikiService implements IAffiliateService {
 
       if (status !== 200) {
         this.logger.error(
-          `Error while fetching product information for tiki: ${status} - ${statusText}`,
+          `Error when get product info from ${product.provider}: ${status} - ${statusText}`,
         );
+
         return product;
       }
 
@@ -115,9 +183,9 @@ export class TikiService implements IAffiliateService {
       return product;
     } catch (error) {
       this.logger.error(
-        `Error while fetching product information for tiki: ${error}`,
+        `Error when get product info from ${product.provider}: ${error}`,
       );
-      throw new Error('Failed to get product info');
+      return product;
     }
   }
 
