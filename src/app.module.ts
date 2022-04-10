@@ -11,10 +11,10 @@ import { AffiliateModule } from './affiliate/affiliate.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'documentation'),
     }),
-    ConfigModule.forRoot(),
     WinstonModule.forRoot({
       transports: [
         new winston.transports.Console({

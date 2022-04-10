@@ -1,0 +1,50 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+  role     Role   @relation(fields: [roleId], references: [id])
+  roleId   String
+}
+
+model Role {
+  id   String @id @default(uuid())
+  name String @unique
+  User User[]
+}
+
+model Category {
+  id      String    @id @default(uuid())
+  name    String    @unique
+  Product Product[]
+}
+
+model Product {
+  id              String   @id @default(uuid())
+  name            String
+  description     String
+  oldMinPrice     Int?
+  oldMaxPrice     Int?
+  currentMinPrice Int
+  currentMaxPrice Int?
+  discountRate    Int?
+  image           String
+  rating          Int
+  provider        String
+  affiliateLink   String
+  productLink     String
+  category        Category @relation(fields: [categoryId], references: [id])
+  categoryId      String
+}

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>affiliate-server documentation</title>
+        <title>Affiliate documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">affiliate-server documentation</a>
+            <a href="./" class="navbar-brand">Affiliate documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -55,7 +55,11 @@
 <h2 id="description">Description</h2>
 <p>Affilicate management system.</p>
 <h2 id="installation">Installation</h2>
-<div><pre class="line-numbers"><code class="language-bash">$ yarn</code></pre></div><h2 id="running-the-app">Running the app</h2>
+<h3 id="1-install-dependencies">1. Install dependencies:</h3>
+<div><pre class="line-numbers"><code class="language-bash">$ yarn</code></pre></div><h3 id="2-pscale-cli-install-step">2. Pscale CLI install step:</h3>
+<div><pre class="line-numbers"><code class="language-bash">iwr -useb get.scoop.sh | iex
+scoop bucket add pscale https://github.com/planetscale/scoop-bucket.git
+scoop install pscale</code></pre></div><h2 id="running-the-app">Running the app</h2>
 <div><pre class="line-numbers"><code class="language-bash"># development
 $ yarn start
 

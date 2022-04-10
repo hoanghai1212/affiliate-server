@@ -28,8 +28,18 @@ Affilicate management system.
 
 ## Installation
 
+### 1. Install dependencies:
+
 ```bash
 $ yarn
+```
+
+### 2. Pscale CLI install step:
+
+```bash
+iwr -useb get.scoop.sh | iex
+scoop bucket add pscale https://github.com/planetscale/scoop-bucket.git
+scoop install pscale
 ```
 
 ## Running the app

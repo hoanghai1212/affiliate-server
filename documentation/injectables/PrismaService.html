@@ -28,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content interface">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -38,16 +38,9 @@
 
 
 
-
-
-
-
-
 <ol class="breadcrumb">
-  <li>Interfaces</li>
-  <li
-  >
-  IAffiliateService</li>
+  <li>Injectables</li>
+  <li >PrismaService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -65,36 +58,56 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/affiliate/interfaces/services.ts</code>
+            <code>src/prisma/prisma.service.ts</code>
         </p>
 
 
 
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code>PrismaClient</code>
+            </p>
 
-        <section>
-            <h3 id="index">Index</h3>
-            <table class="table table-sm table-bordered index-table">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Methods</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#getProductInfo" 
->
-                                        getProductInfo
-                                    </a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#enableShutdownHooks" >enableShutdownHooks</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#onModuleDestroy" >onModuleDestroy</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#onModuleInit" >onModuleInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
 
             <section>
     
@@ -105,24 +118,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getProductInfo"></a>
+                    <a name="enableShutdownHooks"></a>
                     <span class="name">
-                        <span ><b>getProductInfo</b></span>
-                        <a href="#getProductInfo"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>enableShutdownHooks</b></span>
+                        <a href="#enableShutdownHooks"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getProductInfo(uri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>enableShutdownHooks(app: INestApplication)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="4"
-                            class="link-to-prism">src/affiliate/interfaces/services.ts:4</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/prisma/prisma.service.ts:22</a></div>
                 </td>
             </tr>
 
@@ -143,9 +158,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>uri</td>
+                                    <td>app</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <code>INestApplication</code>
                                     </td>
 
                                     <td>
@@ -160,11 +175,89 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/ProductSeedInfoDto.html" target="_self" >Promise&lt;ProductSeedInfoDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onModuleDestroy"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>onModuleDestroy</b></span>
+                        <a href="#onModuleDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onModuleDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/prisma/prisma.service.ts:18</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onModuleInit"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>onModuleInit</b></span>
+                        <a href="#onModuleInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onModuleInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/prisma/prisma.service.ts:14</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
                     </div>
                 </td>
             </tr>
@@ -176,14 +269,42 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ProductSeedInfoDto } from &#x27;../dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  INestApplication,
+  Injectable,
+  OnModuleDestroy,
+  OnModuleInit,
+} from &#x27;@nestjs/common&#x27;;
+import { PrismaClient } from &#x27;@prisma/client&#x27;;
 
-export interface IAffiliateService {
-  getProductInfo(uri: string): Promise&lt;ProductSeedInfoDto&gt;;
+@Injectable()
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
+  async onModuleInit() {
+    await this.$connect();
+  }
+
+  async onModuleDestroy() {
+    await this.$disconnect();
+  }
+
+  async enableShutdownHooks(app: INestApplication) {
+    this.$on(&#x27;beforeExit&#x27;, async () &#x3D;&gt; {
+      await app.close();
+    });
+  }
 }
 </code></pre>
     </div>
+
 </div>
+
+
+
+
+
 
 
 
@@ -217,8 +338,8 @@ export interface IAffiliateService {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'IAffiliateService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'PrismaService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

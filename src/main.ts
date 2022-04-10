@@ -6,12 +6,20 @@ import {
   DocumentBuilder,
   SwaggerCustomOptions,
 } from '@nestjs/swagger';
+import { PrismaService } from './prisma/prisma.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  //** LOGGER CONFIG */
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
 
+  //** PRISMA CONFIG */
+  const prismaService = app.get(PrismaService);
+
+  await prismaService.enableShutdownHooks(app);
+
+  /** SWAGGER CONFIG */
   const config = new DocumentBuilder()
     .setTitle('Affilicate API')
     .setDescription('The affilicate API description')
@@ -29,6 +37,8 @@ async function bootstrap() {
 
   SwaggerModule.setup('api', app, document, customOptions);
 
+  /** START APP SERVER */
   await app.listen(process.env.PORT || 5000);
 }
+
 bootstrap();
