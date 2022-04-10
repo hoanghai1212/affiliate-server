@@ -48,3 +48,29 @@ model Product {
   category        Category @relation(fields: [categoryId], references: [id])
   categoryId      String
 }
+
+model a_6eb2_54a2_8081_f06f927d98e2_20220410132725_del {
+  id              String @id
+  name            String
+  description     String
+  oldMinPrice     Int?
+  oldMaxPrice     Int?
+  currentMinPrice Int
+  currentMaxPrice Int?
+  discountRate    Int?
+  image           String
+  rating          Int
+  provider        String
+  affiliateLink   String
+  productLink     String
+  categoryId      String
+
+  @@map("_7568383a_6eb2_54a2_8081_f06f927d98e2_20220410132725_del")
+}
+
+model vt_HOLD_3201305d363459a999c9e50a989eac96_20220411074546 {
+  id   String @id
+  name String @unique(map: "Test_name_key")
+
+  @@map("_vt_HOLD_3201305d363459a999c9e50a989eac96_20220411074546")
+}
