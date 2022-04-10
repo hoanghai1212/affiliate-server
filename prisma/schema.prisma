@@ -41,7 +41,7 @@ model Product {
   currentMaxPrice Int?
   discountRate    Int?
   image           String
-  rating          Int
+  rating          Decimal
   provider        String
   affiliateLink   String
   productLink     String
