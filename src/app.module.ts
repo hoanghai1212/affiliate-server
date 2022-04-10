@@ -16,7 +16,7 @@ import { AuthModule } from './auth/auth.module';
       isGlobal: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'documentation'),
+      rootPath: join(__dirname, '../..', 'documentation'),
     }),
     WinstonModule.forRoot({
       transports: [
