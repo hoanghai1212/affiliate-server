@@ -25,6 +25,7 @@
 ## Description
 
 Affilicate management system.
+SWAGGER: https://affiliate-app-server.herokuapp.com/api/
 
 ## Installation
 

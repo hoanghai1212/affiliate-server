@@ -1,11 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { ServeStaticModule } from '@nestjs/serve-static';
 import {
   utilities as nestWinstonModuleUtilities,
   WinstonModule,
 } from 'nest-winston';
-import { join } from 'path';
 import * as winston from 'winston';
 import { AffiliateModule } from './affiliate/affiliate.module';
 import { AuthModule } from './auth/auth.module';
@@ -14,9 +12,6 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-    }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../..', 'documentation'),
     }),
     WinstonModule.forRoot({
       transports: [
