@@ -39,12 +39,13 @@ export class LazadaService implements IAffiliateService {
         return product;
       }
 
+      console.log(data);
+
       const { window } = new JSDOM(data, {
-        contentType: 'text/html',
         runScripts: 'dangerously',
       });
 
-      const rawProductInfoFromDataLayer = window.dataLayer.find((data) =>
+      const rawProductInfoFromDataLayer = window.dataLayer?.find((data) =>
         Boolean(data['pdt_name']),
       );
 
@@ -58,12 +59,12 @@ export class LazadaService implements IAffiliateService {
 
       product.name = rawProductInfo.name;
       product.description = rawProductInfo.description;
-      product.discountRate = rawProductInfoFromDataLayer.pdt_discount
-        ? Math.abs(rawProductInfoFromDataLayer.pdt_discount.replace('%', '')) /
+      product.discountRate = rawProductInfoFromDataLayer?.pdt_discount
+        ? Math.abs(rawProductInfoFromDataLayer?.pdt_discount.replace('%', '')) /
           100
         : null;
 
-      const pdt_price = +rawProductInfoFromDataLayer.pdt_price
+      const pdt_price = +rawProductInfoFromDataLayer?.pdt_price
         .slice(0, -2)
         .replace('.', '');
 
