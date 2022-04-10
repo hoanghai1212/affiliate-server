@@ -127,14 +127,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(AffiliateRouteConst.GetProductSeedInfo)<br /></code>
+                    <code>@ApiBearerAuth()<br />@UseGuards(undefined)<br />@Get(AffiliateRouteConst.GetProductSeedInfo)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/affiliate/affiliate.controller.ts:14</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/affiliate/affiliate.controller.ts:17</a></div>
                 </td>
             </tr>
 
@@ -186,9 +186,10 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Param } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Param, UseGuards } from &#x27;@nestjs/common&#x27;;
 import { QueryBus } from &#x27;@nestjs/cqrs&#x27;;
-import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
+import { ApiBearerAuth, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { AffiliateRouteConst } from &#x27;./constants&#x27;;
 import { GetProductSeedInfoQuery } from &#x27;./cqrs/queries/impl&#x27;;
 import { ProductSeedInfoDto } from &#x27;./dto&#x27;;
@@ -198,6 +199,8 @@ import { ProductSeedInfoDto } from &#x27;./dto&#x27;;
 export class AffiliateController {
   constructor(private readonly queryBus: QueryBus) {}
 
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard(&#x27;jwt&#x27;))
   @Get(AffiliateRouteConst.GetProductSeedInfo)
   async getProductSeedInfo(
     @Param(AffiliateRouteConst.ProductLinkParam) productLink: string,

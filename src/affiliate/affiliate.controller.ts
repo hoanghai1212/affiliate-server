@@ -1,6 +1,7 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
-import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AffiliateRouteConst } from './constants';
 import { GetProductSeedInfoQuery } from './cqrs/queries/impl';
 import { ProductSeedInfoDto } from './dto';
@@ -10,6 +11,8 @@ import { ProductSeedInfoDto } from './dto';
 export class AffiliateController {
   constructor(private readonly queryBus: QueryBus) {}
 
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
   @Get(AffiliateRouteConst.GetProductSeedInfo)
   async getProductSeedInfo(
     @Param(AffiliateRouteConst.ProductLinkParam) productLink: string,

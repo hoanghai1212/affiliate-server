@@ -24,6 +24,7 @@ async function bootstrap() {
     .setTitle('Affilicate API')
     .setDescription('The affilicate API description')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const customOptions: SwaggerCustomOptions = {

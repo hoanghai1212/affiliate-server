@@ -120,7 +120,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -197,8 +197,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -277,7 +277,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -299,7 +299,6 @@ import {
 } from &#x27;@nestjs/common&#x27;;
 import { WINSTON_MODULE_NEST_PROVIDER } from &#x27;nest-winston&#x27;;
 import { firstValueFrom } from &#x27;rxjs&#x27;;
-import { PrismaService } from &#x27;src/prisma/prisma.service&#x27;;
 import { Provider } from &#x27;../constants&#x27;;
 import { ProductSeedInfoDto } from &#x27;../dto&#x27;;
 import { IAffiliateService } from &#x27;../interfaces&#x27;;
@@ -371,7 +370,6 @@ export class TikiService implements IAffiliateService {
   private SPID_REGEXP &#x3D; new RegExp(&#x27;spid&#x3D;[0-9]*&#x27;);
 
   constructor(
-    private prisma: PrismaService,
     private readonly httpService: HttpService,
     @Inject(WINSTON_MODULE_NEST_PROVIDER)
     private readonly logger: LoggerService,

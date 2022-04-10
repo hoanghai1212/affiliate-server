@@ -123,12 +123,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(prisma: <a href="../injectables/PrismaService.html" target="_self">PrismaService</a>, httpService: HttpService, logger: LoggerService)</code>
+<code>constructor(httpService: HttpService, logger: LoggerService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:79</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:78</a></div>
                             </td>
                         </tr>
 
@@ -145,18 +145,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <tr>
-                                                        <td>prisma</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/PrismaService.html" target="_self" >PrismaService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
                                                 <tr>
                                                         <td>httpService</td>
                                                   
@@ -217,8 +205,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="126"
-                            class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:126</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:124</a></div>
                 </td>
             </tr>
 
@@ -288,8 +276,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:88</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:86</a></div>
                 </td>
             </tr>
 
@@ -368,7 +356,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:78</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -394,7 +382,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:79</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/affiliate/services/affiliate-provider.service.ts:78</a></div>
                         </td>
                     </tr>
 
@@ -416,7 +404,6 @@ import {
 } from &#x27;@nestjs/common&#x27;;
 import { WINSTON_MODULE_NEST_PROVIDER } from &#x27;nest-winston&#x27;;
 import { firstValueFrom } from &#x27;rxjs&#x27;;
-import { PrismaService } from &#x27;src/prisma/prisma.service&#x27;;
 import { Provider } from &#x27;../constants&#x27;;
 import { ProductSeedInfoDto } from &#x27;../dto&#x27;;
 import { IAffiliateService } from &#x27;../interfaces&#x27;;
@@ -488,7 +475,6 @@ export class TikiService implements IAffiliateService {
   private SPID_REGEXP &#x3D; new RegExp(&#x27;spid&#x3D;[0-9]*&#x27;);
 
   constructor(
-    private prisma: PrismaService,
     private readonly httpService: HttpService,
     @Inject(WINSTON_MODULE_NEST_PROVIDER)
     private readonly logger: LoggerService,

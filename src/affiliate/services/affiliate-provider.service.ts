@@ -7,7 +7,6 @@ import {
 } from '@nestjs/common';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { firstValueFrom } from 'rxjs';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { Provider } from '../constants';
 import { ProductSeedInfoDto } from '../dto';
 import { IAffiliateService } from '../interfaces';
@@ -79,7 +78,6 @@ export class TikiService implements IAffiliateService {
   private SPID_REGEXP = new RegExp('spid=[0-9]*');
 
   constructor(
-    private prisma: PrismaService,
     private readonly httpService: HttpService,
     @Inject(WINSTON_MODULE_NEST_PROVIDER)
     private readonly logger: LoggerService,

@@ -8,10 +8,13 @@ import {
 import { join } from 'path';
 import * as winston from 'winston';
 import { AffiliateModule } from './affiliate/affiliate.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'documentation'),
     }),
@@ -28,6 +31,7 @@ import { AffiliateModule } from './affiliate/affiliate.module';
         }),
       ],
     }),
+    AuthModule,
     AffiliateModule,
   ],
 })
