@@ -2,7 +2,6 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { AffiliateDomain } from '../constants';
 import { IAffiliateService } from '../interfaces';
 import {
-  LazadaService,
   ShopeeService,
   TikiService,
 } from '../services/affiliate-provider.service';
@@ -11,13 +10,11 @@ import {
 export class AffiliateServiceFactory {
   SERVICE_MAP = {
     [AffiliateDomain.TIKI]: this.tikiService,
-    [AffiliateDomain.LAZADA]: this.lazadaService,
     [AffiliateDomain.SHOPEE]: this.shopeeService,
   };
 
   constructor(
     private readonly tikiService: TikiService,
-    private readonly lazadaService: LazadaService,
     private readonly shopeeService: ShopeeService,
   ) {}
 

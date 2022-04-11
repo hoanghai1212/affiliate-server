@@ -5,7 +5,6 @@ export enum Provider {
 }
 
 export enum AffiliateDomain {
-  LAZADA = 'lazada.vn',
   SHOPEE = 'shopee.vn',
   TIKI = 'tiki.vn',
 }
