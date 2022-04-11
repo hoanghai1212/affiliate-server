@@ -4,6 +4,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { AuthModule } from 'src/auth/auth.module';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { AffiliateController } from './affiliate.controller';
+import { CommandHandlers } from './cqrs/commands/handlers';
 import { QueryHandlers } from './cqrs/queries/handlers';
 import { AffiliateServiceFactory } from './factories/affiliate-provider-factory';
 import { ShopeeService, TikiService } from './services';
@@ -17,6 +18,7 @@ import { ShopeeService, TikiService } from './services';
     ShopeeService,
     AffiliateServiceFactory,
     ...QueryHandlers,
+    ...CommandHandlers,
   ],
 })
 export class AffiliateModule {}

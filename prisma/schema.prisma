@@ -34,13 +34,13 @@ model Category {
 model Product {
   id              String   @id @default(uuid())
   name            String
-  description     String
+  description     String?
   oldMinPrice     Int?
   oldMaxPrice     Int?
   currentMinPrice Int
   currentMaxPrice Int?
-  discountRate    Int?
-  image           String
+  discountRate    Decimal?
+  image           String?
   rating          Decimal
   provider        String
   affiliateLink   String
