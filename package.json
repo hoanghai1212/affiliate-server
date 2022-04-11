@@ -14,7 +14,7 @@
   "scripts": {
     "postinstall": "husky install",
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "npx prisma db pull & npx prisma generate & nest build",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
