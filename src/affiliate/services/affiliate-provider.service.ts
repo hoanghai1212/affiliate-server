@@ -29,7 +29,12 @@ export class LazadaService implements IAffiliateService {
 
     try {
       const { data, status, statusText } = await firstValueFrom(
-        this.httpService.get(uri),
+        this.httpService.get(uri, {
+          headers: {
+            origin: 'https://www.lazada.vn',
+            referer: 'https://www.lazada.vn/',
+          },
+        }),
       );
 
       if (status !== 200) {
