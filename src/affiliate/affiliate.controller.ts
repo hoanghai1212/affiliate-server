@@ -20,6 +20,6 @@ export class AffiliateController {
     return await this.queryBus.execute<
       GetProductSeedInfoQuery,
       ProductSeedInfoDto
-    >(new GetProductSeedInfoQuery(productLink));
+    >(new GetProductSeedInfoQuery(productLink.replace('www.', '')));
   }
 }

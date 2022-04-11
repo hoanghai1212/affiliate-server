@@ -19,7 +19,7 @@ export class AffiliateServiceFactory {
   ) {}
 
   public getAffiliateService(uri: string): IAffiliateService {
-    const domain = uri.replace('www.', '').split('/')[2] as AffiliateDomain;
+    const domain = uri.split('/')[2] as AffiliateDomain;
 
     const result = this.SERVICE_MAP[domain];
 

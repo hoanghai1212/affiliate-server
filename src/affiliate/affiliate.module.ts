@@ -6,7 +6,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { AffiliateController } from './affiliate.controller';
 import { QueryHandlers } from './cqrs/queries/handlers';
 import { AffiliateServiceFactory } from './factories/affiliate-provider-factory';
-import { LazadaService, ShopeeService, TikiService } from './services';
+import { ShopeeService, TikiService } from './services';
 
 @Module({
   controllers: [AffiliateController],
@@ -14,7 +14,6 @@ import { LazadaService, ShopeeService, TikiService } from './services';
   providers: [
     PrismaService,
     TikiService,
-    LazadaService,
     ShopeeService,
     AffiliateServiceFactory,
     ...QueryHandlers,
