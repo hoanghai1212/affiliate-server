@@ -10,8 +10,13 @@ export class CreateProductCommandHandler
   constructor(private readonly prisma: PrismaService) {}
 
   async execute(command: CreateProductCommand): Promise<ProductCreatedDto> {
+    const { categoryId, ...productCreateData } = command.productCreateDto;
+
     const createdProduct = await this.prisma.product.create({
-      data: command.productCreateDto,
+      data: {
+        ...productCreateData,
+        category: { connect: { id: categoryId } },
+      },
     });
 
     return {
