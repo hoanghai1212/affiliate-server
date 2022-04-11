@@ -11,7 +11,7 @@ export class ProductCreateDto {
   @ApiProperty({
     type: String,
   })
-  description: string;
+  description?: string;
 
   @ApiProperty({
     type: Number,
@@ -46,7 +46,7 @@ export class ProductCreateDto {
   @ApiProperty({
     type: String,
   })
-  image: string;
+  image?: string;
 
   @ApiProperty({
     type: Number,
