@@ -11,7 +11,7 @@ export class ProductCreateDto {
   @ApiProperty({
     type: String,
   })
-  description?: string;
+  description: string;
 
   @ApiProperty({
     type: Number,
