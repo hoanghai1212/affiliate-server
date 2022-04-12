@@ -1,3 +1,4 @@
+import { NotFoundException } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { UserProfileDto } from 'src/auth/dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -10,22 +11,23 @@ export class GetUserProfileQueryHandler
   constructor(private readonly prisma: PrismaService) {}
 
   async execute(query: GetUserProfileQuery): Promise<UserProfileDto> {
-    return await this.prisma.user
-      .findUnique({
-        where: {
-          id: query.userId,
-        },
-        include: {
-          role: true,
-        },
-      })
-      ?.then(
-        (user) =>
-          ({
-            name: user.name,
-            email: user.email,
-            role: user.role.name,
-          } as UserProfileDto),
-      );
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: query.userId,
+      },
+      include: {
+        role: true,
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundException(`User with id ${query.userId} not found`);
+    }
+
+    return {
+      name: user.name,
+      email: user.email,
+      role: user.role.name,
+    } as UserProfileDto;
   }
 }
