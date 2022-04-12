@@ -10,7 +10,7 @@ export class UpdateProductCommandHandler
   constructor(private readonly prisma: PrismaService) {}
 
   async execute(command: UpdateProductCommand): Promise<ProductUpdatedDto> {
-    return await this.prisma.product.update({
+    const updatedProduct = await this.prisma.product.update({
       where: {
         id: command.productId,
       },
@@ -18,5 +18,9 @@ export class UpdateProductCommandHandler
         ...command.productUpdateDto,
       },
     });
+
+    return {
+      id: updatedProduct.id,
+    } as ProductUpdatedDto;
   }
 }

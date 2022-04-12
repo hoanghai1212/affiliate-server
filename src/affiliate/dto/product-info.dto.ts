@@ -1,4 +1,5 @@
 import { CategoryInfoDto } from '.';
+import { Provider } from '../constants';
 
 export class ProductInfoDto {
   id: string;
@@ -11,7 +12,7 @@ export class ProductInfoDto {
   discountRate: number;
   image: string;
   rating: number;
-  provider: string;
+  provider: Provider;
   affiliateLink: string;
   productLink: string;
   category: CategoryInfoDto;

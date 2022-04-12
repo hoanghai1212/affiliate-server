@@ -99,7 +99,7 @@ export class AffiliateController {
   @UseGuards(AuthGuard('jwt'))
   @Delete('categories/:categoryId')
   async deleteCategory(@Param('categoryId') categoryId: string) {
-    return await this.commandBus.execute<DeleteCategoryCommand>(
+    return await this.commandBus.execute<DeleteCategoryCommand, void>(
       new DeleteCategoryCommand(categoryId),
     );
   }
