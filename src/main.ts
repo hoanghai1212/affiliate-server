@@ -10,6 +10,7 @@ import { PrismaService } from './prisma/prisma.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api');
 
   //** LOGGER CONFIG */
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
@@ -36,7 +37,7 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
 
-  SwaggerModule.setup('api', app, document, customOptions);
+  SwaggerModule.setup('api-docs', app, document, customOptions);
 
   /** START APP SERVER */
   await app.listen(process.env.PORT || 5000);
